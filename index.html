@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mission CA Final – Nepal CA Final Study Notes</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ─── TOKENS ───────────────────────────────────────────────── */
+:root {
+  --green-900: #0d2818;
+  --green-800: #1a3d28;
+  --green-700: #1f4d32;
+  --green-600: #2e6b46;
+  --green-500: #3a8a59;
+  --green-400: #52a874;
+  --green-300: #80c99a;
+  --green-100: #d4eddd;
+  --green-50:  #f0f9f3;
+
+  --bg:        #ffffff;
+  --bg-soft:   #f7faf8;
+  --surface:   #ffffff;
+  --surface-2: #f0f6f3;
+  --border:    #d8e8de;
+  --text:      #0d2818;
+  --text-muted:#4a6357;
+  --text-light:#7a9489;
+
+  --shadow-sm: 0 1px 3px rgba(13,40,24,.08);
+  --shadow-md: 0 4px 16px rgba(13,40,24,.12);
+  --shadow-lg: 0 8px 32px rgba(13,40,24,.15);
+
+  --radius:    12px;
+  --radius-lg: 18px;
+  --font-head: 'Lora', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+}
+[data-theme="dark"] {
+  --bg:        #0b1f14;
+  --bg-soft:   #0f2a1a;
+  --surface:   #132b1c;
+  --surface-2: #1a3826;
+  --border:    #2a4d36;
+  --text:      #e8f5ee;
+  --text-muted:#9bbfaa;
+  --text-light:#6a9479;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.3);
+  --shadow-md: 0 4px 16px rgba(0,0,0,.4);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,.5);
+}
+
+/* ─── RESET ─────────────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{
+  font-family:var(--font-body);
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+  transition:background .25s,color .25s;
+}
+img{max-width:100%;display:block}
+a{color:var(--green-500);text-decoration:none}
+a:hover{text-decoration:underline}
+button{cursor:pointer;font-family:var(--font-body)}
+
+/* ─── NAV ────────────────────────────────────────────────────── */
+.nav{
+  position:sticky;top:0;z-index:100;
+  background:var(--green-900);
+  border-bottom:1px solid var(--green-800);
+  backdrop-filter:blur(8px);
+}
+[data-theme="dark"] .nav{background:rgba(11,31,20,.95)}
+.nav-inner{
+  max-width:1200px;margin:0 auto;
+  padding:0 1.5rem;
+  display:flex;align-items:center;gap:1rem;
+  height:60px;
+}
+.nav-logo{
+  font-family:var(--font-head);
+  font-size:1.2rem;font-weight:700;
+  color:#fff;
+  display:flex;align-items:center;gap:.5rem;
+  white-space:nowrap;
+}
+.nav-logo span{
+  background:var(--green-500);
+  color:#fff;
+  font-size:.65rem;font-weight:600;
+  padding:.15rem .4rem;
+  border-radius:4px;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+}
+.nav-links{
+  display:flex;gap:.25rem;
+  list-style:none;
+  margin-left:1.5rem;
+}
+.nav-links a{
+  color:rgba(255,255,255,.75);
+  font-size:.85rem;font-weight:500;
+  padding:.4rem .75rem;
+  border-radius:6px;
+  transition:background .15s,color .15s;
+  text-decoration:none;
+}
+.nav-links a:hover{background:rgba(255,255,255,.1);color:#fff}
+.nav-spacer{flex:1}
+.nav-search{
+  display:flex;align-items:center;
+  background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:8px;
+  padding:.35rem .75rem;
+  gap:.5rem;
+  width:220px;
+  transition:width .2s,background .2s;
+}
+.nav-search:focus-within{
+  background:rgba(255,255,255,.15);
+  width:280px;
+}
+.nav-search input{
+  background:none;border:none;outline:none;
+  color:#fff;font-family:var(--font-body);
+  font-size:.85rem;width:100%;
+}
+.nav-search input::placeholder{color:rgba(255,255,255,.5)}
+.nav-search svg{flex-shrink:0;opacity:.6}
+.theme-btn{
+  background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.15);
+  color:#fff;
+  width:36px;height:36px;
+  border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .15s;
+  flex-shrink:0;
+}
+.theme-btn:hover{background:rgba(255,255,255,.2)}
+.admin-btn{
+  background:var(--green-600);
+  border:none;
+  color:#fff;
+  font-size:.8rem;font-weight:600;
+  padding:.4rem .9rem;
+  border-radius:8px;
+  transition:background .15s;
+  white-space:nowrap;
+  flex-shrink:0;
+}
+.admin-btn:hover{background:var(--green-500)}
+.hamburger{
+  display:none;
+  background:none;border:none;
+  color:#fff;padding:.3rem;
+}
+
+/* ─── HERO ───────────────────────────────────────────────────── */
+.hero{
+  background:linear-gradient(135deg,var(--green-900) 0%,var(--green-700) 60%,var(--green-500) 100%);
+  padding:5rem 1.5rem 4rem;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.hero-eyebrow{
+  display:inline-block;
+  background:rgba(255,255,255,.15);
+  color:rgba(255,255,255,.9);
+  font-size:.75rem;font-weight:600;
+  letter-spacing:.12em;text-transform:uppercase;
+  padding:.35rem 1rem;border-radius:20px;
+  margin-bottom:1.25rem;
+  border:1px solid rgba(255,255,255,.2);
+}
+.hero h1{
+  font-family:var(--font-head);
+  font-size:clamp(2rem,5vw,3.2rem);
+  font-weight:700;color:#fff;
+  line-height:1.2;margin-bottom:1rem;
+}
+.hero h1 em{
+  font-style:italic;
+  color:var(--green-300);
+}
+.hero-tagline{
+  font-size:1.1rem;color:rgba(255,255,255,.8);
+  max-width:500px;margin:0 auto 2rem;
+}
+.hero-cta{
+  display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;
+}
+.btn-primary{
+  background:#fff;
+  color:var(--green-800);
+  font-weight:600;font-size:.95rem;
+  padding:.75rem 1.75rem;
+  border-radius:10px;border:none;
+  transition:transform .15s,box-shadow .15s;
+  box-shadow:var(--shadow-md);
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+.btn-outline{
+  background:rgba(255,255,255,.1);
+  color:#fff;
+  font-weight:600;font-size:.95rem;
+  padding:.75rem 1.75rem;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,.3);
+  transition:background .15s;
+}
+.btn-outline:hover{background:rgba(255,255,255,.2)}
+
+/* ─── STATS BAR ──────────────────────────────────────────────── */
+.stats-bar{
+  background:var(--surface);
+  border-bottom:1px solid var(--border);
+  padding:1rem 1.5rem;
+}
+.stats-inner{
+  max-width:1200px;margin:0 auto;
+  display:flex;gap:2rem;
+  justify-content:center;flex-wrap:wrap;
+}
+.stat-item{
+  display:flex;align-items:center;gap:.6rem;
+  font-size:.9rem;
+}
+.stat-icon{
+  width:32px;height:32px;
+  background:var(--green-100);
+  border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+[data-theme="dark"] .stat-icon{background:var(--surface-2)}
+.stat-num{font-weight:700;color:var(--green-600);font-size:1.05rem}
+[data-theme="dark"] .stat-num{color:var(--green-400)}
+.stat-label{color:var(--text-muted);font-size:.82rem}
+
+/* ─── MAIN ────────────────────────────────────────────────────── */
+.main{max-width:1200px;margin:0 auto;padding:2.5rem 1.5rem}
+.section-header{
+  display:flex;align-items:baseline;justify-content:space-between;
+  margin-bottom:1.75rem;gap:1rem;flex-wrap:wrap;
+}
+.section-title{
+  font-family:var(--font-head);
+  font-size:1.5rem;font-weight:700;
+  color:var(--text);
+}
+.section-subtitle{font-size:.9rem;color:var(--text-muted);margin-top:.2rem}
+
+/* ─── SEARCH SECTION ─────────────────────────────────────────── */
+.search-section{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding:1.5rem;
+  margin-bottom:2rem;
+  box-shadow:var(--shadow-sm);
+}
+.search-big{
+  display:flex;align-items:center;
+  background:var(--bg-soft);
+  border:1.5px solid var(--border);
+  border-radius:10px;
+  padding:.6rem 1rem;
+  gap:.75rem;
+  transition:border-color .15s,box-shadow .15s;
+}
+.search-big:focus-within{
+  border-color:var(--green-500);
+  box-shadow:0 0 0 3px rgba(58,138,89,.12);
+}
+.search-big input{
+  flex:1;background:none;border:none;outline:none;
+  font-family:var(--font-body);font-size:1rem;
+  color:var(--text);
+}
+.search-big input::placeholder{color:var(--text-light)}
+#search-results-count{
+  font-size:.82rem;color:var(--text-muted);
+  margin-top:.6rem;
+  min-height:1.2em;
+}
+
+/* ─── CARDS GRID ─────────────────────────────────────────────── */
+.cards-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+  gap:1.5rem;
+}
+.subject-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+  box-shadow:var(--shadow-sm);
+  transition:transform .2s,box-shadow .2s;
+  display:flex;flex-direction:column;
+}
+.subject-card:hover{
+  transform:translateY(-3px);
+  box-shadow:var(--shadow-md);
+}
+.card-header{
+  padding:1.25rem 1.25rem 1rem;
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:flex-start;gap:1rem;
+}
+.card-icon{
+  width:44px;height:44px;
+  border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;font-size:1.25rem;
+}
+.card-meta{flex:1}
+.card-paper{
+  font-size:.7rem;font-weight:600;
+  letter-spacing:.08em;text-transform:uppercase;
+  opacity:.7;margin-bottom:.2rem;
+}
+.card-title{
+  font-family:var(--font-head);
+  font-size:.95rem;font-weight:700;
+  color:var(--text);line-height:1.3;
+}
+.card-badge{
+  font-size:.7rem;font-weight:600;
+  padding:.2rem .55rem;
+  border-radius:20px;
+  white-space:nowrap;
+  flex-shrink:0;
+  margin-top:.2rem;
+}
+.card-body{padding:1.25rem;flex:1;display:flex;flex-direction:column;gap:1rem}
+
+/* file list */
+.file-list{display:flex;flex-direction:column;gap:.5rem;min-height:2rem}
+.file-item{
+  display:flex;align-items:center;gap:.6rem;
+  padding:.5rem .6rem;
+  background:var(--bg-soft);
+  border:1px solid var(--border);
+  border-radius:8px;
+  font-size:.82rem;
+}
+.file-icon{
+  width:26px;height:26px;
+  background:var(--green-100);
+  border-radius:5px;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;font-size:.75rem;
+  font-weight:700;color:var(--green-700);
+}
+[data-theme="dark"] .file-icon{background:var(--surface-2);color:var(--green-300)}
+.file-name{flex:1;color:var(--text);font-weight:500;word-break:break-word}
+.file-size{color:var(--text-light);font-size:.75rem;white-space:nowrap}
+.btn-download{
+  background:var(--green-600);
+  color:#fff;border:none;
+  padding:.3rem .65rem;
+  border-radius:6px;font-size:.75rem;font-weight:600;
+  display:flex;align-items:center;gap:.3rem;
+  transition:background .15s;
+  flex-shrink:0;
+}
+.btn-download:hover{background:var(--green-500)}
+
+/* empty state */
+.empty-state{
+  text-align:center;
+  padding:1.5rem;
+  color:var(--text-muted);
+  font-size:.85rem;
+  border:2px dashed var(--border);
+  border-radius:10px;
+}
+.empty-state svg{opacity:.4;margin:0 auto .5rem}
+
+/* ─── ADMIN PANEL ─────────────────────────────────────────────── */
+.modal-overlay{
+  display:none;
+  position:fixed;inset:0;z-index:200;
+  background:rgba(0,0,0,.55);
+  backdrop-filter:blur(4px);
+  align-items:center;justify-content:center;
+  padding:1rem;
+}
+.modal-overlay.open{display:flex}
+.modal{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  box-shadow:var(--shadow-lg);
+  width:100%;max-width:540px;
+  max-height:90vh;overflow-y:auto;
+  animation:slideUp .2s ease;
+}
+@keyframes slideUp{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
+.modal-header{
+  padding:1.25rem 1.5rem;
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.modal-title{
+  font-family:var(--font-head);
+  font-size:1.1rem;font-weight:700;color:var(--text);
+}
+.modal-close{
+  background:none;border:none;
+  color:var(--text-muted);
+  width:32px;height:32px;
+  border-radius:6px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.25rem;
+  transition:background .15s;
+}
+.modal-close:hover{background:var(--surface-2)}
+.modal-body{padding:1.5rem;display:flex;flex-direction:column;gap:1.25rem}
+
+.form-group{display:flex;flex-direction:column;gap:.4rem}
+.form-label{font-size:.85rem;font-weight:600;color:var(--text)}
+.form-input,.form-select{
+  background:var(--bg-soft);
+  border:1.5px solid var(--border);
+  border-radius:8px;
+  padding:.6rem .85rem;
+  font-family:var(--font-body);font-size:.9rem;
+  color:var(--text);
+  outline:none;
+  transition:border-color .15s,box-shadow .15s;
+}
+.form-input:focus,.form-select:focus{
+  border-color:var(--green-500);
+  box-shadow:0 0 0 3px rgba(58,138,89,.12);
+}
+
+.upload-area{
+  border:2px dashed var(--border);
+  border-radius:10px;
+  padding:2rem;
+  text-align:center;
+  cursor:pointer;
+  transition:border-color .15s,background .15s;
+}
+.upload-area:hover,.upload-area.drag-over{
+  border-color:var(--green-500);
+  background:var(--green-50);
+}
+[data-theme="dark"] .upload-area:hover,[data-theme="dark"] .upload-area.drag-over{
+  background:rgba(58,138,89,.07);
+}
+.upload-area input{display:none}
+.upload-icon{
+  width:48px;height:48px;
+  background:var(--green-100);
+  border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto .75rem;
+}
+[data-theme="dark"] .upload-icon{background:var(--surface-2)}
+.upload-label{font-size:.9rem;font-weight:500;color:var(--text);margin-bottom:.25rem}
+.upload-sub{font-size:.78rem;color:var(--text-muted)}
+.upload-file-name{
+  display:none;
+  margin-top:.75rem;
+  font-size:.82rem;font-weight:500;
+  color:var(--green-600);
+  background:var(--green-50);
+  padding:.4rem .75rem;border-radius:6px;
+}
+[data-theme="dark"] .upload-file-name{background:rgba(58,138,89,.1);color:var(--green-300)}
+.btn-submit{
+  background:var(--green-700);
+  color:#fff;border:none;
+  padding:.75rem;border-radius:10px;
+  font-size:.95rem;font-weight:600;
+  width:100%;
+  transition:background .15s;
+}
+.btn-submit:hover{background:var(--green-600)}
+.btn-submit:disabled{opacity:.6;cursor:not-allowed}
+
+/* login form */
+#login-section{display:flex;flex-direction:column;gap:1rem}
+.login-hint{font-size:.8rem;color:var(--text-muted);text-align:center}
+.login-error{
+  display:none;
+  font-size:.82rem;font-weight:500;
+  color:#dc2626;
+  background:#fef2f2;
+  padding:.5rem .75rem;border-radius:6px;
+  border:1px solid #fecaca;
+}
+[data-theme="dark"] .login-error{background:rgba(220,38,38,.1);border-color:rgba(220,38,38,.3)}
+
+/* ─── TOAST ──────────────────────────────────────────────────── */
+.toast-container{
+  position:fixed;bottom:1.5rem;right:1.5rem;
+  z-index:300;
+  display:flex;flex-direction:column;gap:.6rem;
+  pointer-events:none;
+}
+.toast{
+  background:var(--green-900);
+  color:#fff;
+  padding:.75rem 1.1rem;
+  border-radius:10px;
+  font-size:.85rem;font-weight:500;
+  box-shadow:var(--shadow-lg);
+  display:flex;align-items:center;gap:.6rem;
+  max-width:300px;
+  border-left:3px solid var(--green-400);
+  pointer-events:auto;
+  animation:toastIn .25s ease;
+}
+.toast.error{border-left-color:#f87171;background:#450a0a}
+@keyframes toastIn{from{transform:translateX(100%);opacity:0}to{transform:translateX(0);opacity:1}}
+@keyframes toastOut{from{opacity:1;transform:translateX(0)}to{opacity:0;transform:translateX(100%)}}
+.toast.hide{animation:toastOut .25s ease forwards}
+
+/* ─── ADMIN PANEL CONTENT ──────────────────────────────────────── */
+#admin-section{display:none}
+.admin-files-list{display:flex;flex-direction:column;gap:.5rem;max-height:200px;overflow-y:auto}
+.admin-file-row{
+  display:flex;align-items:center;
+  padding:.5rem .75rem;
+  background:var(--bg-soft);
+  border:1px solid var(--border);
+  border-radius:8px;
+  font-size:.82rem;gap:.6rem;
+}
+.admin-file-row span{flex:1;color:var(--text)}
+.btn-delete{
+  background:none;border:none;
+  color:#dc2626;
+  width:26px;height:26px;
+  border-radius:5px;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .15s;
+}
+.btn-delete:hover{background:#fef2f2}
+[data-theme="dark"] .btn-delete:hover{background:rgba(220,38,38,.1)}
+.admin-section-title{
+  font-size:.8rem;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;
+  color:var(--text-muted);
+  border-bottom:1px solid var(--border);
+  padding-bottom:.5rem;
+}
+.admin-logout{
+  background:none;border:1px solid var(--border);
+  color:var(--text-muted);
+  font-size:.8rem;font-weight:500;
+  padding:.4rem .85rem;border-radius:7px;
+  transition:all .15s;
+}
+.admin-logout:hover{border-color:#dc2626;color:#dc2626}
+
+/* ─── FOOTER ─────────────────────────────────────────────────── */
+footer{
+  background:var(--green-900);
+  color:rgba(255,255,255,.6);
+  text-align:center;
+  padding:2rem 1.5rem;
+  margin-top:3rem;
+  font-size:.85rem;
+  border-top:3px solid var(--green-700);
+}
+footer strong{color:#fff}
+footer p+p{margin-top:.4rem}
+.footer-links{
+  display:flex;gap:1.5rem;justify-content:center;
+  list-style:none;margin-top:.75rem;
+}
+.footer-links a{
+  color:rgba(255,255,255,.5);
+  font-size:.82rem;
+  text-decoration:none;
+  transition:color .15s;
+}
+.footer-links a:hover{color:#fff}
+
+/* ─── SUBJECT COLOR ACCENTS ──────────────────────────────────── */
+/* P1 - AFR - Indigo */
+.accent-p1{--ac:#6366f1;--ac-light:#eef2ff;--ac-dark:#4338ca}
+/* P2 - AFM - Amber */
+.accent-p2{--ac:#f59e0b;--ac-light:#fffbeb;--ac-dark:#b45309}
+/* P3 - Audit - Teal */
+.accent-p3{--ac:#14b8a6;--ac-light:#f0fdfa;--ac-dark:#0f766e}
+/* P4 - Corp Law - Rose */
+.accent-p4{--ac:#f43f5e;--ac-light:#fff1f2;--ac-dark:#be123c}
+/* P5 - MICS - Purple */
+.accent-p5{--ac:#a855f7;--ac-light:#faf5ff;--ac-dark:#7e22ce}
+/* P6 - Tax - Orange */
+.accent-p6{--ac:#f97316;--ac-light:#fff7ed;--ac-dark:#c2410c}
+/* P7 - ACMA - Cyan */
+.accent-p7{--ac:#06b6d4;--ac-light:#ecfeff;--ac-dark:#0e7490}
+/* P8 - SMDA - Green */
+.accent-p8{--ac:#22c55e;--ac-light:#f0fdf4;--ac-dark:#15803d}
+
+[data-theme="dark"] .accent-p1{--ac-light:rgba(99,102,241,.12)}
+[data-theme="dark"] .accent-p2{--ac-light:rgba(245,158,11,.1)}
+[data-theme="dark"] .accent-p3{--ac-light:rgba(20,184,166,.1)}
+[data-theme="dark"] .accent-p4{--ac-light:rgba(244,63,94,.1)}
+[data-theme="dark"] .accent-p5{--ac-light:rgba(168,85,247,.1)}
+[data-theme="dark"] .accent-p6{--ac-light:rgba(249,115,22,.1)}
+[data-theme="dark"] .accent-p7{--ac-light:rgba(6,182,212,.1)}
+[data-theme="dark"] .accent-p8{--ac-light:rgba(34,197,94,.1)}
+
+.subject-card .card-icon{background:var(--ac-light);color:var(--ac)}
+.subject-card .card-paper{color:var(--ac)}
+.subject-card .card-badge{background:var(--ac-light);color:var(--ac)}
+.subject-card .card-header{border-bottom-color:var(--border)}
+
+/* card top strip */
+.card-strip{height:4px;background:var(--ac)}
+
+/* ─── RESPONSIVE ─────────────────────────────────────────────── */
+@media(max-width:768px){
+  .nav-links,.nav-search{display:none}
+  .hamburger{display:flex}
+  .cards-grid{grid-template-columns:1fr}
+  .hero{padding:3.5rem 1.25rem 3rem}
+  .stats-inner{gap:1rem}
+  .modal{max-width:100%}
+}
+.mobile-menu{
+  display:none;
+  background:var(--green-900);
+  padding:.75rem 1.5rem 1.25rem;
+  border-bottom:1px solid var(--green-800);
+}
+.mobile-menu.open{display:block}
+.mobile-menu a{
+  display:block;
+  color:rgba(255,255,255,.8);
+  padding:.5rem 0;
+  font-size:.9rem;
+  border-bottom:1px solid rgba(255,255,255,.07);
+  text-decoration:none;
+}
+.mobile-search{
+  margin-top:.75rem;
+  display:flex;align-items:center;gap:.5rem;
+  background:rgba(255,255,255,.1);
+  border-radius:8px;padding:.4rem .75rem;
+}
+.mobile-search input{
+  flex:1;background:none;border:none;outline:none;
+  color:#fff;font-size:.9rem;
+}
+.mobile-search input::placeholder{color:rgba(255,255,255,.5)}
+
+/* highlight for search */
+.highlight{background:#fef08a;border-radius:2px;color:#713f12}
+[data-theme="dark"] .highlight{background:#854d0e;color:#fef08a}
+
+/* progress */
+.upload-progress{
+  display:none;height:6px;
+  background:var(--border);border-radius:3px;overflow:hidden;
+}
+.upload-progress-bar{
+  height:100%;background:var(--green-500);
+  border-radius:3px;width:0;
+  transition:width .2s;
+}
+
+/* ─── LOADING BAR ────────────────────────────────────────────── */
+#loading-bar{
+  display:none;
+  position:fixed;top:0;left:0;right:0;z-index:999;
+  height:3px;
+  background:linear-gradient(90deg,var(--green-500),var(--green-300),var(--green-500));
+  background-size:200% 100%;
+  animation:loadingSlide 1.2s infinite linear;
+}
+@keyframes loadingSlide{from{background-position:200% 0}to{background-position:-200% 0}}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAVIGATION ═══════════════════════════════════════════════ -->
+<div id="loading-bar"></div>
+<nav class="nav" id="main-nav">
+  <div class="nav-inner">
+    <div class="nav-logo">
+      Mission CA Final
+      <span>Nepal</span>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="#subjects">Subjects</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="https://finsight.netlify.app" target="_blank">FinSight Blog</a></li>
+    </ul>
+
+    <div class="nav-spacer"></div>
+
+    <div class="nav-search" id="nav-search-wrap">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" id="nav-search-input" placeholder="Search notes…" autocomplete="off">
+    </div>
+
+    <button class="theme-btn" id="theme-toggle" aria-label="Toggle dark mode">
+      <svg id="sun-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg id="moon-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+
+    <button class="admin-btn" id="open-admin">
+      ⬆ Admin
+    </button>
+
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    </button>
+  </div>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#subjects">Subjects</a>
+    <a href="#about">About</a>
+    <a href="https://finsight.netlify.app" target="_blank">FinSight Blog</a>
+    <div class="mobile-search">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" id="mobile-search-input" placeholder="Search notes…">
+    </div>
+  </div>
+</nav>
+
+<!-- ═══ HERO ══════════════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-eyebrow">🎓 ICAN Nepal – CA Final Level</div>
+  <h1>Mission <em>CA Final</em> 🇳🇵</h1>
+  <p class="hero-tagline">Your complete CA Final study companion — subject notes, curated resources, and everything you need to clear CA Final.</p>
+  <div class="hero-cta">
+    <button class="btn-primary" onclick="document.getElementById('subjects').scrollIntoView({behavior:'smooth'})">
+      📚 Browse Notes
+    </button>
+    <a class="btn-outline" href="#about">Learn More</a>
+  </div>
+</section>
+
+<!-- ═══ STATS BAR ══════════════════════════════════════════════════ -->
+<section class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-icon">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--green-600)" stroke-width="2.5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      </div>
+      <div>
+        <div class="stat-num" id="stat-subjects">8</div>
+        <div class="stat-label">Subjects</div>
+      </div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-icon">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--green-600)" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      </div>
+      <div>
+        <div class="stat-num" id="stat-notes">0</div>
+        <div class="stat-label">Notes Available</div>
+      </div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-icon">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--green-600)" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      </div>
+      <div>
+        <div class="stat-num" id="stat-downloads">0</div>
+        <div class="stat-label">Total Downloads</div>
+      </div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-icon">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--green-600)" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <div>
+        <div class="stat-num">Free</div>
+        <div class="stat-label">Always Free</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ MAIN CONTENT ══════════════════════════════════════════════ -->
+<main class="main">
+
+  <!-- Search section -->
+  <div class="search-section" id="subjects">
+    <div class="search-big">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--text-light)" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" id="main-search" placeholder="Search across all subjects and notes…" autocomplete="off">
+    </div>
+    <div id="search-results-count"></div>
+  </div>
+
+  <!-- Section header -->
+  <div class="section-header">
+    <div>
+      <h2 class="section-title">CA Final Study Notes</h2>
+      <p class="section-subtitle">All 8 papers — notes uploaded by admin, free to download</p>
+    </div>
+  </div>
+
+  <!-- Cards -->
+  <div class="cards-grid" id="cards-grid">
+    <!-- Generated by JS -->
+  </div>
+
+  <!-- About section -->
+  <div id="about" style="margin-top:3.5rem">
+    <div class="section-header">
+      <div>
+        <h2 class="section-title">About Mission CA Final</h2>
+        <p class="section-subtitle">Built for CA Final students in Nepal</p>
+      </div>
+    </div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.75rem;box-shadow:var(--shadow-sm);max-width:700px">
+      <p style="color:var(--text-muted);line-height:1.75;font-size:.95rem">
+        Mission CA Final is a free resource hub for CA Final level students in Nepal. All study notes are curated and uploaded by the admin. Students can download any notes without creating an account. The site is maintained alongside <a href="https://finsight.netlify.app" target="_blank">FinSight</a>, a finance blog covering accounting, financial reporting, and CA exam insights.
+      </p>
+      <p style="color:var(--text-muted);line-height:1.75;font-size:.95rem;margin-top:1rem">
+        Notes are organized paper-wise. New material is added regularly as exam season approaches. Bookmark this page and check back often!
+      </p>
+    </div>
+  </div>
+</main>
+
+<!-- ═══ FOOTER ════════════════════════════════════════════════════ -->
+<footer>
+  <p><strong>Mission CA Final</strong> — Nepal 🇳🇵</p>
+  <p>Free study notes for CA Final level students</p>
+  <ul class="footer-links">
+    <li><a href="#subjects">Notes</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="https://finsight.netlify.app" target="_blank">FinSight Blog</a></li>
+  </ul>
+  <p style="margin-top:1.25rem;font-size:.78rem;opacity:.5">&copy; 2025 Mission CA Final. All rights reserved.</p>
+</footer>
+
+<!-- ═══ ADMIN MODAL ════════════════════════════════════════════════ -->
+<div class="modal-overlay" id="admin-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title">🔐 Admin Panel</div>
+      <button class="modal-close" id="close-admin">✕</button>
+    </div>
+    <div class="modal-body">
+
+      <!-- Login form -->
+      <div id="login-section" style="display:flex;flex-direction:column;gap:1rem">
+        <p style="font-size:.88rem;color:var(--text-muted)">Enter admin password to upload notes.</p>
+        <div class="form-group">
+          <label class="form-label" for="admin-password">Password</label>
+          <input class="form-input" type="password" id="admin-password" placeholder="Enter admin password" autocomplete="current-password">
+        </div>
+        <div class="login-error" id="login-error">Incorrect password. Please try again.</div>
+        <button class="btn-submit" id="login-btn">Login</button>
+        <p class="login-hint">Students don't need to login to download notes.</p>
+      </div>
+
+      <!-- Admin panel (hidden until logged in) -->
+      <div id="admin-section">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.25rem">
+          <p style="font-size:.88rem;color:var(--green-500);font-weight:600">✅ Logged in as Admin</p>
+          <button class="admin-logout" id="admin-logout">Logout</button>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Select Subject</label>
+          <select class="form-select" id="upload-subject">
+            <option value="">— Choose a subject —</option>
+            <option value="0">Paper 1 – Advanced Financial Reporting</option>
+            <option value="1">Paper 2 – Advanced Financial Management</option>
+            <option value="2">Paper 3 – Advanced Auditing</option>
+            <option value="3">Paper 4 – Corporate Laws</option>
+            <option value="4">Paper 5 – Management Information and Control System</option>
+            <option value="5">Paper 6 – Advanced Taxation</option>
+            <option value="6">Paper 7 – Advanced Cost and Management Accounting</option>
+            <option value="7">Paper 8 – Strategic Management and Decision Making Analysis</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Note Title</label>
+          <input class="form-input" type="text" id="upload-title" placeholder="e.g. Chapter 1 – Introduction to IAS 1">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">File URL <span style="font-weight:400;color:var(--text-muted)">(from GitHub / Google Drive / any public link)</span></label>
+          <input class="form-input" type="url" id="upload-url" placeholder="https://raw.githubusercontent.com/...">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">File Size <span style="font-weight:400;color:var(--text-muted)">(optional, e.g. 2.4 MB)</span></label>
+          <input class="form-input" type="text" id="upload-size" placeholder="e.g. 1.8 MB">
+        </div>
+
+        <!-- OR drag/drop area for GitHub guidance -->
+        <div class="upload-area" id="upload-area">
+          <div class="upload-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green-600)" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          </div>
+          <div class="upload-label">Paste the public file URL above</div>
+          <div class="upload-sub">Upload the file to your GitHub repo first, then paste the raw link here.<br>See setup guide below.</div>
+        </div>
+
+        <div class="upload-progress"><div class="upload-progress-bar" id="upload-progress-bar"></div></div>
+
+        <button class="btn-submit" id="add-note-btn">Add Note to Subject</button>
+
+        <div>
+          <div class="admin-section-title" style="margin-bottom:.75rem">Manage Existing Notes</div>
+          <select class="form-select" id="manage-subject" style="margin-bottom:.75rem">
+            <option value="">— Select subject to manage —</option>
+            <option value="0">Paper 1 – AFR</option>
+            <option value="1">Paper 2 – AFM</option>
+            <option value="2">Paper 3 – Auditing</option>
+            <option value="3">Paper 4 – Corp Laws</option>
+            <option value="4">Paper 5 – MICS</option>
+            <option value="5">Paper 6 – Taxation</option>
+            <option value="6">Paper 7 – ACMA</option>
+            <option value="7">Paper 8 – SMDA</option>
+          </select>
+          <div class="admin-files-list" id="admin-files-list">
+            <div style="font-size:.82rem;color:var(--text-muted);text-align:center;padding:.75rem">Select a subject to manage its notes</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ TOAST CONTAINER ════════════════════════════════════════════ -->
+<div class="toast-container" id="toast-container"></div>
+
+<script>
+// ── CONFIG ─────────────────────────────────────────────────────────
+var SB_URL  = 'https://nbttxytnkgzcmkgbxoch.supabase.co';
+var SB_KEY  = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5idHR4eXRua2d6Y21rZ2J4b2NoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI1NzAzMzMsImV4cCI6MjA5ODE0NjMzM30.HpYvVka1xpVwoyNjGyGqS8lFdgbsRoqDfZvGs14UUCc';
+var PASS    = 'kishor.2059';
+
+// ── SUBJECTS ───────────────────────────────────────────────────────
+var SUBJECTS = [
+  { paper:'Paper 1', title:'Advanced Financial Reporting',                      emoji:'📊', accent:'accent-p1' },
+  { paper:'Paper 2', title:'Advanced Financial Management',                     emoji:'💹', accent:'accent-p2' },
+  { paper:'Paper 3', title:'Advanced Auditing',                                 emoji:'🔍', accent:'accent-p3' },
+  { paper:'Paper 4', title:'Corporate Laws',                                    emoji:'⚖️', accent:'accent-p4' },
+  { paper:'Paper 5', title:'Management Information and Control System',         emoji:'🖥️', accent:'accent-p5' },
+  { paper:'Paper 6', title:'Advanced Taxation',                                 emoji:'🧾', accent:'accent-p6' },
+  { paper:'Paper 7', title:'Advanced Cost and Management Accounting',           emoji:'📐', accent:'accent-p7' },
+  { paper:'Paper 8', title:'Strategic Management and Decision Making Analysis', emoji:'♟️', accent:'accent-p8' },
+];
+
+// notes[i] = array of {id, title, url, size} fetched from Supabase
+var notes = SUBJECTS.map(function(){ return []; });
+var isAdmin = false;
+
+// ── SUPABASE HELPERS ───────────────────────────────────────────────
+function sbFetch(method, path, body) {
+  var opts = {
+    method: method,
+    headers: {
+      'apikey': SB_KEY,
+      'Authorization': 'Bearer ' + SB_KEY,
+      'Content-Type': 'application/json',
+      'Prefer': method === 'POST' ? 'return=representation' : ''
+    }
+  };
+  if (body) opts.body = JSON.stringify(body);
+  return fetch(SB_URL + '/rest/v1/' + path, opts).then(function(r) {
+    if (!r.ok) return r.text().then(function(t){ throw new Error(t); });
+    return r.json();
+  });
+}
+
+// Load all notes from Supabase
+function loadAllNotes() {
+  setLoading(true);
+  sbFetch('GET', 'notes?select=*&order=created_at.asc')
+    .then(function(rows) {
+      notes = SUBJECTS.map(function(){ return []; });
+      rows.forEach(function(row) {
+        var idx = row.subject_index;
+        if (idx >= 0 && idx < SUBJECTS.length) {
+          notes[idx].push({ id: row.id, title: row.title, url: row.url, size: row.size || '' });
+        }
+      });
+      setLoading(false);
+      renderCards(document.getElementById('main-search').value);
+    })
+    .catch(function(err) {
+      setLoading(false);
+      toast('❌ Could not load notes: ' + err.message, true);
+      renderCards('');
+    });
+}
+
+function setLoading(on) {
+  var el = document.getElementById('loading-bar');
+  if (el) el.style.display = on ? 'block' : 'none';
+}
+
+// ── TOAST ──────────────────────────────────────────────────────────
+function toast(msg, isError) {
+  var c = document.getElementById('toast-container');
+  var t = document.createElement('div');
+  t.className = 'toast' + (isError ? ' error' : '');
+  t.innerHTML = '<span>' + msg + '</span>';
+  c.appendChild(t);
+  setTimeout(function(){ t.classList.add('hide'); setTimeout(function(){ t.remove(); }, 260); }, 3500);
+}
+
+// ── ESCAPE HTML ────────────────────────────────────────────────────
+function esc(s) {
+  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ── RENDER CARDS ──────────────────────────────────────────────────
+function renderCards(filter) {
+  filter = (filter || '').trim().toLowerCase();
+  var grid = document.getElementById('cards-grid');
+  grid.innerHTML = '';
+  var totalNotes = 0;
+
+  SUBJECTS.forEach(function(subj, idx) {
+    var subjectNotes = notes[idx] || [];
+    totalNotes += subjectNotes.length;
+
+    var matchSubj = subj.title.toLowerCase().indexOf(filter) >= 0 || subj.paper.toLowerCase().indexOf(filter) >= 0;
+    var matchNotes = filter ? subjectNotes.filter(function(n){ return n.title.toLowerCase().indexOf(filter) >= 0; }) : subjectNotes;
+    if (filter && !matchSubj && matchNotes.length === 0) return;
+
+    var shownNotes = (filter && !matchSubj) ? matchNotes : subjectNotes;
+
+    var filesHTML = '';
+    if (shownNotes.length === 0) {
+      filesHTML = '<div class="empty-state">'
+        + '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">'
+        + '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>'
+        + '<polyline points="14 2 14 8 20 8"/></svg>Notes coming soon</div>';
+    } else {
+      shownNotes.forEach(function(f) {
+        var realIdx = subjectNotes.indexOf(f);
+        filesHTML += '<div class="file-item">'
+          + '<div class="file-icon">PDF</div>'
+          + '<div class="file-name">' + esc(f.title) + '</div>'
+          + (f.size ? '<span class="file-size">' + esc(f.size) + '</span>' : '')
+          + '<button class="btn-download" data-sidx="' + idx + '" data-nidx="' + realIdx + '">'
+          + '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">'
+          + '<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>'
+          + '<polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>'
+          + ' Download</button></div>';
+      });
+    }
+
+    var card = document.createElement('div');
+    card.className = 'subject-card ' + subj.accent;
+    card.innerHTML = '<div class="card-strip"></div>'
+      + '<div class="card-header">'
+      + '<div class="card-icon">' + subj.emoji + '</div>'
+      + '<div class="card-meta">'
+      + '<div class="card-paper">' + subj.paper + '</div>'
+      + '<div class="card-title">' + esc(subj.title) + '</div>'
+      + '</div>'
+      + '<div class="card-badge">' + subjectNotes.length + ' ' + (subjectNotes.length === 1 ? 'note' : 'notes') + '</div>'
+      + '</div>'
+      + '<div class="card-body"><div class="file-list">' + filesHTML + '</div></div>';
+    grid.appendChild(card);
+  });
+
+  // stats
+  document.getElementById('stat-notes').textContent = totalNotes;
+  var dlCount = parseInt(localStorage.getItem('mcaf_dl') || '0');
+  document.getElementById('stat-downloads').textContent = dlCount;
+
+  // search count label
+  var countEl = document.getElementById('search-results-count');
+  if (filter) {
+    var shown = grid.querySelectorAll('.subject-card').length;
+    countEl.textContent = 'Showing ' + shown + ' subject' + (shown !== 1 ? 's' : '') + ' matching "' + filter + '"';
+  } else {
+    countEl.textContent = '';
+  }
+}
+
+// ── DOWNLOAD ──────────────────────────────────────────────────────
+document.getElementById('cards-grid').addEventListener('click', function(e) {
+  var btn = e.target.closest('.btn-download');
+  if (!btn) return;
+  var si = parseInt(btn.getAttribute('data-sidx'));
+  var ni = parseInt(btn.getAttribute('data-nidx'));
+  var note = notes[si] && notes[si][ni];
+  if (!note) return;
+  var dl = parseInt(localStorage.getItem('mcaf_dl') || '0') + 1;
+  localStorage.setItem('mcaf_dl', dl);
+  document.getElementById('stat-downloads').textContent = dl;
+  toast('⬇️ Downloading "' + note.title + '"…');
+  window.open(note.url, '_blank');
+});
+
+// ── THEME ─────────────────────────────────────────────────────────
+var root = document.documentElement;
+function applyTheme(dark) {
+  root.setAttribute('data-theme', dark ? 'dark' : 'light');
+  document.getElementById('sun-icon').style.display  = dark ? 'none'  : 'block';
+  document.getElementById('moon-icon').style.display = dark ? 'block' : 'none';
+  localStorage.setItem('mcaf_theme', dark ? 'dark' : 'light');
+}
+document.getElementById('theme-toggle').addEventListener('click', function() {
+  applyTheme(root.getAttribute('data-theme') !== 'dark');
+});
+if (localStorage.getItem('mcaf_theme') === 'dark') applyTheme(true);
+
+// ── SEARCH ────────────────────────────────────────────────────────
+var searchTimer;
+function doSearch(val) {
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(function(){ renderCards(val); }, 150);
+}
+document.getElementById('main-search').addEventListener('input', function(){ doSearch(this.value); });
+document.getElementById('nav-search-input').addEventListener('input', function(){
+  document.getElementById('main-search').value = this.value;
+  doSearch(this.value);
+  document.getElementById('subjects').scrollIntoView({ behavior: 'smooth' });
+});
+document.getElementById('mobile-search-input').addEventListener('input', function(){
+  document.getElementById('main-search').value = this.value;
+  doSearch(this.value);
+});
+
+// ── HAMBURGER ────────────────────────────────────────────────────
+document.getElementById('hamburger').addEventListener('click', function(){
+  document.getElementById('mobile-menu').classList.toggle('open');
+});
+
+// ── ADMIN MODAL ──────────────────────────────────────────────────
+var adminModal = document.getElementById('admin-modal');
+document.getElementById('open-admin').addEventListener('click', function(){
+  adminModal.classList.add('open');
+  if (!isAdmin) setTimeout(function(){ document.getElementById('admin-password').focus(); }, 100);
+});
+document.getElementById('close-admin').addEventListener('click', function(){
+  adminModal.classList.remove('open');
+});
+adminModal.addEventListener('click', function(e){
+  if (e.target === adminModal) adminModal.classList.remove('open');
+});
+
+// ── LOGIN ────────────────────────────────────────────────────────
+function doLogin() {
+  var pw = document.getElementById('admin-password').value;
+  if (pw === PASS) {
+    isAdmin = true;
+    document.getElementById('login-section').style.display = 'none';
+    document.getElementById('admin-section').style.display = 'block';
+    toast('✅ Admin access granted');
+  } else {
+    document.getElementById('login-error').style.display = 'block';
+    document.getElementById('admin-password').value = '';
+    document.getElementById('admin-password').focus();
+  }
+}
+document.getElementById('login-btn').addEventListener('click', doLogin);
+document.getElementById('admin-password').addEventListener('keydown', function(e){
+  if (e.key === 'Enter') doLogin();
+});
+
+// ── LOGOUT ───────────────────────────────────────────────────────
+document.getElementById('admin-logout').addEventListener('click', function(){
+  isAdmin = false;
+  document.getElementById('login-section').style.display = 'flex';
+  document.getElementById('admin-section').style.display = 'none';
+  document.getElementById('login-error').style.display = 'none';
+  document.getElementById('admin-password').value = '';
+  adminModal.classList.remove('open');
+  toast('Logged out');
+});
+
+// ── ADD NOTE (saves to Supabase) ─────────────────────────────────
+document.getElementById('add-note-btn').addEventListener('click', function() {
+  var subjVal = document.getElementById('upload-subject').value;
+  var title   = document.getElementById('upload-title').value.trim();
+  var url     = document.getElementById('upload-url').value.trim();
+  var size    = document.getElementById('upload-size').value.trim();
+
+  if (subjVal === '')           { toast('⚠️ Select a subject first', true); return; }
+  if (title === '')             { toast('⚠️ Enter a note title', true); return; }
+  if (url === '')               { toast('⚠️ Paste the file URL', true); return; }
+  if (url.indexOf('http') !== 0){ toast('⚠️ URL must start with https://', true); return; }
+
+  var btn = document.getElementById('add-note-btn');
+  btn.disabled = true;
+  btn.textContent = 'Saving…';
+
+  sbFetch('POST', 'notes', {
+    subject_index: parseInt(subjVal),
+    title: title,
+    url: url,
+    size: size
+  })
+  .then(function() {
+    toast('✅ Note added successfully!');
+    document.getElementById('upload-subject').value = '';
+    document.getElementById('upload-title').value   = '';
+    document.getElementById('upload-url').value     = '';
+    document.getElementById('upload-size').value    = '';
+    btn.disabled = false;
+    btn.textContent = 'Add Note to Subject';
+    loadAllNotes(); // refresh from DB so everyone sees it
+  })
+  .catch(function(err) {
+    toast('❌ Failed to save: ' + err.message, true);
+    btn.disabled = false;
+    btn.textContent = 'Add Note to Subject';
+  });
+});
+
+// ── MANAGE LIST ──────────────────────────────────────────────────
+document.getElementById('manage-subject').addEventListener('change', refreshManageList);
+function refreshManageList() {
+  var el  = document.getElementById('admin-files-list');
+  var val = document.getElementById('manage-subject').value;
+  if (val === '') {
+    el.innerHTML = '<div style="font-size:.82rem;color:var(--text-muted);text-align:center;padding:.75rem">Select a subject to manage its notes</div>';
+    return;
+  }
+  var idx  = parseInt(val);
+  var list = notes[idx] || [];
+  if (list.length === 0) {
+    el.innerHTML = '<div style="font-size:.82rem;color:var(--text-muted);text-align:center;padding:.75rem">No notes yet for this subject</div>';
+    return;
+  }
+  var html = '';
+  list.forEach(function(f, fi) {
+    html += '<div class="admin-file-row">'
+      + '<span>' + esc(f.title) + '</span>'
+      + '<button class="btn-delete" onclick="deleteNote(\'' + f.id + '\',' + idx + ')" title="Delete">'
+      + '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">'
+      + '<polyline points="3 6 5 6 21 6"/>'
+      + '<path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/>'
+      + '</svg></button></div>';
+  });
+  el.innerHTML = html;
+}
+
+function deleteNote(id, subjIdx) {
+  if (!confirm('Delete this note? This cannot be undone.')) return;
+  sbFetch('DELETE', 'notes?id=eq.' + id)
+    .then(function() {
+      toast('🗑️ Note deleted');
+      loadAllNotes();
+      setTimeout(function(){
+        document.getElementById('manage-subject').value = subjIdx;
+        refreshManageList();
+      }, 600);
+    })
+    .catch(function(err) {
+      toast('❌ Delete failed: ' + err.message, true);
+    });
+}
+
+// ── INIT ─────────────────────────────────────────────────────────
+loadAllNotes();
+</script>
+</body>
+</html>
