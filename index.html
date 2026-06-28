@@ -1334,8 +1334,9 @@ function deleteNote(id, subjIdx) {
 }
 
 // ── PASSWORD GATE ─────────────────────────────────────────────────
-var SITE_PASS   = 'Dr=Cr';   // ← share this with your friends
+var SITE_PASS   = 'jerry';   // ← share this with your friends
 var SESSION_KEY = 'mcaf_access';
+  var SESSION_DAYS = 1;
 
 function checkSession() {
   try {
@@ -1354,7 +1355,7 @@ function grantAccess(animate) {
     content.style.display = 'block';
     loadAllNotes();
   }
-  localStorage.setItem(SESSION_KEY, JSON.stringify({ ok:true, expires: Date.now() + 7*24*60*60*1000 }));
+  localStorage.setItem(SESSION_KEY, JSON.stringify({ ok:true, expires: Date.now() + 1*24*60*60*1000 }));
 }
 function tryUnlock() {
   var val = document.getElementById('gate-input').value;
